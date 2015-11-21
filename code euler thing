@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+float calculate_e (float n){
+  float euler = 0.0;
+  float new_euler;
+  float result = 1000000;
+  float didi = 0.0;
+  float fact = 1.0;
+
+  while (result > n){
+    if (didi == 0.0){
+      fact = 1.0;
+      new_euler = euler;
+      euler = euler + (1.0/fact);
+      result = euler - new_euler;
+      didi++;
+    }else {
+    fact = fact*didi;
+    new_euler = euler;
+    euler = euler + (1.0/fact);
+    result = euler - new_euler;
+    didi++;
+  }
+}
+  return euler;
+}
+
+int main(){
+  float n;
+  cout << "Tell me the accuracy you need"<< endl;
+  cin>> n;
+  float euler = calculate_e (n);
+  cout << euler << endl;
+  return 0;
+}
